@@ -3,35 +3,35 @@ It uses an abstract method to make debugging easier.
 Created on: 23/10/21
 Created by: @Blastorios'''
 
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 from pathlib import Path
 
 import streamlit as st
 
 # Enforce common methods
-class DefaultPageFormat(ABC):
+class DefaultPageFormat(ABCMeta):
     
     @abstractmethod
-    def __error():
-        pass
+    def _error(self):
+        ...
     
     @abstractmethod
-    def __generate_columns():
-        pass
+    def generate_columns(self):
+        ...
     
     @abstractmethod
-    def write():
-        pass
+    def write(self):
+        ...
 
 
 # Add basic functionalities here
-class DefaultPage(object, metaclass=DefaultPageFormat):
+class DefaultPage(metaclass=DefaultPageFormat):
     """A simple page with some basic functions."""
     
     def __init__(self):
         self.cwd = Path().cwd()
     
-     def __error(self, placeholder, error_msg: str) -> None:
+    def _error(self, placeholder, error_msg: str) -> None:
         """Helper functione to insert a given error message."""
         
         placeholder.error(error_msg)
@@ -40,6 +40,6 @@ class DefaultPage(object, metaclass=DefaultPageFormat):
         
         return
     
-    def __generate_columns(self, column_number: int = 2):
+    def generate_columns(self, column_number: int = 2):
         """Generate n streamlit columns"""
-        return st.beta_columns(column_number)
+        return st.columns(column_number)

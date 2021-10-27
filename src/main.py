@@ -5,32 +5,40 @@ Created by: @Blastorios'''
 import streamlit as st
 
 from utils import add_custom_css
-from pages import PAGE_MAP
+from pages import STARTING_PAGE, PAGE_MAP
 
 st.set_page_config(
-    page_title='Blastorios Dashboard',
+    page_title = 'Blastorios Dashboard',
     # page_icon = favicon,
-    layout='wide',
-    initial_sidebar_state='auto')
+    layout = 'wide',
+    initial_sidebar_state = 'auto')
 
-add_custom_css()
+# Whenever I want to update the css:
+add_custom_css(
+    
+)
 
-st.sidebar.title("Services:")
+# Setup the sidebar:
+st.sidebar.title("Services")
 
-current_page = st.sidebar.radio("", sorted(list(PAGE_MAP)))
+radio_selection = PAGE_MAP.copy()
+radio_selection.pop(STARTING_PAGE, None)
+
+# Ensure we always have the 'welcomepage' on top of the service list.
+current_page = st.sidebar.radio("", [STARTING_PAGE] + sorted(list(radio_selection)))
 
 st.sidebar.info(
     """
-    Official GameBois Services
+    Dashboard by [Blastorios](https://github.com/Blastorios)
     
-    All is free to use
+    All is free to use, services that require a password: `root(16) + 16^2 = ?`
     
-    Chat with us on [discord](https://discord.gg/nZYQsC6fHX)!
+    Chat with me on [discord](https://discord.gg/nZYQsC6fHX)!
     """)
 
-# Welcome Page
+# Welcome Page:
 def main():
-    PAGE_MAP[current_page].write()
+    PAGE_MAP[current_page]().write()
     
 
 if __name__ == "__main__":
