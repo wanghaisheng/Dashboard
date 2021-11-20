@@ -1,18 +1,16 @@
-import streamlit as st
-from abc import ABC, abstractmethod
+from streamlit import markdown
 
+from psutil import virtual_memory
 
-class Page(ABC):
-    
-    @abstractmethod
-    def write(self):
-        pass
+def check_memory():
+    mem = virtual_memory()
+    return mem.percent
 
-
-def add_custom_css():
-    st.markdown(
-        """
+def add_custom_css(css: str = ""):
+    markdown(
+        f"""
         <style>
+        {css}
         </style>
         """,
         unsafe_allow_html=True

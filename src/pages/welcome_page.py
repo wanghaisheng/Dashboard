@@ -39,17 +39,29 @@ class WelcomePage(DefaultPage):
         
         st.subheader("New Utilities?")
         
-        st.info("""Feel free to **open an issue on GitHub** if you
+        st.info("""Feel free to **[open an issue on GitHub](https://github.com/Blastorios/Dashboard/issues)** if you
             would **like to see more apps/functions** added 
-            (which might help others as well!).""")
+            (that might help others as well!).""")
         
         st.subheader("Important!")
         
-        st.info("""Streamlit services are restarted on
+        st.info("""Streamlit services are restarted
             whenever you reload the page.
             Have a long running job? Leave
             the page open otherwise you will
             lose all progress.""")
+        
+        # st.write("User Count (running sum):")
+        
+        # st.write(
+        #     "<img src='https://profile-counter.glitch.me/BlastoriosDashboard/count.svg' alt='Dashboard Visitin Count' />", 
+        #     unsafe_allow_html = True)
     
         return
         
+        # Following is possibly not necessary since we have per-user-session_state?
+        # TODO: Create a simple google sheet database that stores session values as a dict
+        # This dict is retreived after people login and their username+passwd match with a row in the spreadsheet
+        # maximize the spreadsheet row count to 10_000, where people that havent been online for long will be deleted
+        # this dict is then stored in st.session_state with their respective login as the retreival. (possible to assign consistent
+        # memory in a sidebar while a user is the website?)
