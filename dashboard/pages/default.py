@@ -5,6 +5,7 @@ Created by: @Blastorios'''
 
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
+from time import sleep
 
 import streamlit as st
 
@@ -16,7 +17,7 @@ class DefaultPageFormat(ABCMeta):
         ...
     
     @abstractmethod
-    def generate_columns(self):
+    def _generate_columns(self):
         ...
     
     @abstractmethod
@@ -40,6 +41,6 @@ class DefaultPage(metaclass=DefaultPageFormat):
         
         return
     
-    def generate_columns(self, column_number: int = 2):
+    def _generate_columns(self, column_number: int = 2):
         """Generate n streamlit columns"""
         return st.columns(column_number)

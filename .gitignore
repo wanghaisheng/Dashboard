@@ -6,7 +6,7 @@ __pycache__/
 
 # Individually generated static files
 ideas
-TODO
+TODO*
 
 # C extensions
 *.so

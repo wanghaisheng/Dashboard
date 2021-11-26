@@ -2,21 +2,25 @@
 Created on: 23/10/21
 Created by: @Blastorios'''
 
+from datetime import datetime
+import logging
+
 import streamlit as st
 
-from utils import add_custom_css
-from pages import STARTING_PAGE, PAGE_MAP
+from dashboard.utils import add_custom_css
+from dashboard.pages import STARTING_PAGE, PAGE_MAP
+
+# TODO: setup application logger.
+# _log = logging.getLogger(__package__)
 
 st.set_page_config(
-    page_title = 'Blastorios Dashboard',
+    page_title = "Blastorios' Dashboard",
     # page_icon = favicon,
     layout = 'wide',
     initial_sidebar_state = 'auto')
 
 # Whenever I want to update the css:
-add_custom_css(
-    
-)
+add_custom_css()
 
 # Setup the sidebar:
 st.sidebar.title("Services")
@@ -35,6 +39,8 @@ st.sidebar.info(
     
     Chat with me on [discord](https://discord.gg/nZYQsC6fHX)!
     """)
+
+# _log.info("Starting Dashboard")
 
 # Welcome Page:
 def main():

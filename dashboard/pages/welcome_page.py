@@ -2,11 +2,9 @@
 Created on: 23/10/21
 Created by: @Blastorios'''
 
-import uuid
-
 import streamlit as st
 
-from .default import DefaultPage
+from dashboard.pages.default import DefaultPage
 
 class WelcomePage(DefaultPage):
     """We need to welcome people ofc :)"""
